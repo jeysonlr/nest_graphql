@@ -1,0 +1,37 @@
+version: '3'
+services:
+  api-nest-graphql:
+    container_name: api-nest-graphql
+    restart: on-failure
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: yarn start:dev
+    env_file:
+      - .env
+    depends_on:
+      - postgresql
+  postgresql:
+    container_name: postgresql
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - .docker-data/postgres:/var/lib/postgresql/data
+  database_adminer:
+    container_name: database_adminer
+    image: adminer
+    ports:
+      - 8081:8080
+    depends_on:
+      - postgresql

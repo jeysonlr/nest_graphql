@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "33af6d85-1277-4b14-83b3-a90d4f6d3b70",
+		"name": "GraphQl+NestJs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mutations",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createUser ($createUserInput: CreateUserInput!) {\n    createUser (createUserInput: $createUserInput) {\n        userId\n        firstName\n        lastName\n        email\n        role\n    }\n}",
+								"variables": "{\n  \"createUserInput\": {\n    \"firstName\": \"Amanda\",\n    \"lastName\": \"Barreto\",\n    \"email\": \"amanda@gmail.com\",\n    \"password\": \"123\",\n    \"role\": \"USER\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateUser ($updateUserInput: UpdateUserInput!) {\n    updateUser (updateUserInput: $updateUserInput) {\n        userId\n        firstName\n        lastName\n        email\n        role\n    }\n}",
+								"variables": "{\n  \"updateUserInput\": {\n    \"userId\": \"d8163307-80b1-4e48-bd04-f33c2c535626\",\n    \"firstName\": \"Amanda\",\n    \"lastName\": \"Pereira\",\n    \"email\": \"amanda@gmail.com\",\n    \"password\": \"123\",\n    \"role\": \"USER\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation removeUser ($userId: String!) {\n    removeUser (userId: $userId) {\n        userId\n    }\n}",
+								"variables": "{\n  \"userId\": \"d8163307-80b1-4e48-bd04-f33c2c535626\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query users {\n    users {\n        userId\n        firstName\n        lastName\n        email\n        password\n        role\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query user ($userId: String!) {\n    user (userId: $userId) {\n        userId\n        firstName\n        lastName\n        email\n        password\n        role\n    }\n}",
+								"variables": "{\n  \"userId\": \"c71910d8-7251-4379-a534-989c09dec068\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:3000/graphql",
+			"type": "any"
+		}
+	]
+}

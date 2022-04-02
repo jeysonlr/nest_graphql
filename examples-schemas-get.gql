@@ -1,0 +1,67 @@
+# Write your query or mutation here
+
+# cria usuario
+mutation {
+  createUser(
+    createUserInput: {
+      firstName: "Amanda"
+      lastName: "Barreto"
+      email: "dont-spam-me@gmail.com"
+      password: 123
+      role: "USER"
+    }
+  ) {
+    userId
+    firstName
+    lastName
+    email
+    role
+  }
+},
+
+# busca usuario
+query{ 
+  users{ 
+    userId 
+    firstName 
+    lastName 
+    email
+  } 
+}
+
+# atualizar usuario
+mutation { 
+  updateUser( 
+    updateUserInput: { 
+      userId: "7154a7f0-6066-4688-861c-0c05f934a58e",
+      firstName: "Heloisa",
+      lastName: "Romualdo",
+      email: "dont-spam-me@gmail.com"
+      password: 123
+      role: "USER"
+    } 
+  ) { 
+    userId 
+    firstName 
+    lastName
+		email
+    role
+  } 
+}
+
+# remover usuario
+mutation{ 
+  removeUser(userId:"fa7b6f3c-3de9-4849-a086-ff81d11a9ec1"){ 
+    userId 
+  } 
+}
+
+# busca por id
+query{ 
+  user(userId:"7154a7f0-6066-4688-861c-0c05f934a58e"){ 
+    userId
+    firstName 
+    lastName 
+    email 
+  } 
+}
