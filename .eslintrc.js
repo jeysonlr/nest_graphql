@@ -35,9 +35,7 @@ module.exports = {
       'warn',
       {
         newlinesBetween: 'always',
-        groups: [
-          'module',
-        ],
+        groups: ['module'],
         alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],

@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { DatabaseType } from 'typeorm';
+import { AuthModule } from './auth/auth.module';
 dotenv.config();
 
 type PostgresType = 'postgres';
@@ -14,6 +15,7 @@ type PostgresType = 'postgres';
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: './schema.gql',
+      context: ({ req }) => ({ req }),
       debug: true,
       playground: true,
     }),
@@ -30,6 +32,7 @@ type PostgresType = 'postgres';
       synchronize: true,
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
